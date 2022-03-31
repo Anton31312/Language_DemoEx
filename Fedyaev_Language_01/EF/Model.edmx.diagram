@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3fbaacac5c114169917b7c633f57a5d5" Name="Diagram1">
+        <EntityTypeShape EntityType="Language_Fedyaev_01Model.CategoryEmployer" Width="1.5" PointX="3.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Language_Fedyaev_01Model.Client" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Language_Fedyaev_01Model.ClientService" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Language_Fedyaev_01Model.Employer" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Language_Fedyaev_01Model.Gender" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Language_Fedyaev_01Model.Service" Width="1.5" PointX="8.25" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Language_Fedyaev_01Model.ServicePhoto" Width="1.5" PointX="10.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="Language_Fedyaev_01Model.sysdiagrams" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Language_Fedyaev_01Model.Tag" Width="1.5" PointX="5.25" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="Language_Fedyaev_01Model.VM_ClientDetails" Width="1.5" PointX="8.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Language_Fedyaev_01Model.VM_ClientList" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="Language_Fedyaev_01Model.FK_Employer_CategoryEmployer" ManuallyRouted="false" />
+        <AssociationConnector Association="Language_Fedyaev_01Model.FK_Client_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="Language_Fedyaev_01Model.FK_ClientService_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="Language_Fedyaev_01Model.FK_ClientService_Service" ManuallyRouted="false" />
+        <AssociationConnector Association="Language_Fedyaev_01Model.FK_Employer_Gender" ManuallyRouted="false" />
+        <AssociationConnector Association="Language_Fedyaev_01Model.FK_ServicePhoto_Service" ManuallyRouted="false" />
+        <AssociationConnector Association="Language_Fedyaev_01Model.EmployerService" ManuallyRouted="false" />
+        <AssociationConnector Association="Language_Fedyaev_01Model.TagClient" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
