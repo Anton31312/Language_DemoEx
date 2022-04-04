@@ -364,5 +364,10 @@ namespace Fedyaev_Language_01.Windows
             this.Opacity = 1;
             Filter();
         }
+
+        private void BtnVisitChek_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

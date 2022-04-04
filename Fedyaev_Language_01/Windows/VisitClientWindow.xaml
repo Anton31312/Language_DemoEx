@@ -1,0 +1,111 @@
+﻿<Window x:Class="Fedyaev_Language_01.Windows.VisitClientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Fedyaev_Language_01.Windows"
+        mc:Ignorable="d"
+        Title="VisitClientWindow"
+        Height="450" 
+        Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="8*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Grid.Row = 0 -->
+
+        <Border Background="#FFE7FABF" 
+                Grid.ColumnSpan="5"/>
+
+        <Image Source="../Source/school_logo.png"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Width="50"
+               Height="50"/>
+
+        <TextBlock Text="Посещения пользователя"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Foreground="#FF04A0FF"
+                   FontSize="25" 
+                   Grid.Column="2" 
+                   Grid.ColumnSpan="2"/>
+
+        <!-- Grid.Column = 1 -->
+
+        <Image Source="../Source/school_logo.png"
+               Grid.Row="1"
+               Opacity="0.4" 
+               Grid.ColumnSpan="2"
+               Grid.RowSpan="2"/>
+
+        <ListView x:Name="lvVisitClient"
+                  Grid.Row="1"
+                  Grid.ColumnSpan="2"
+                  Background="Transparent">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="Beige"
+                HorizontalAlignment="Center"
+                Height="200"
+                Width="400"
+                BorderThickness="1"
+                BorderBrush="LightGray">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+
+                            <!--Grid.Collumn = 0-->
+                            <TextBlock Text="Наименнования услуги"
+                                       Margin="10 0 0 0"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       FontSize="20"/>
+
+                            <TextBlock Text="гггг.мм.дд чч:мм"
+                                       Margin="10 0 0 0"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Grid.Row="1"
+                                       FontSize="20"/>
+
+                            <TextBlock Text="всего файлов: 9"
+                                       Margin="10 0 0 0"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Grid.Row="2"
+                                       FontSize="20"/>
+
+                            <!--Grid.Collumn = 1-->
+                            <Button x:Name="btnOpen"
+                                    Grid.Column="1"
+                                    Grid.RowSpan="3"
+                                    Style="{Binding Source=btnNonRound}"
+                                    Background="Transparent"
+                                    BorderThickness="2"
+                                    BorderBrush="LightGray">
+                                <Image Source="../Source/rectangle.png"/>
+                            </Button>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>

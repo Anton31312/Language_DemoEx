@@ -53,8 +53,8 @@
         <Image Source="../Source/school_logo.png"
                Grid.Row="1"
                Opacity="0.4" 
-               Grid.ColumnSpan="5"
-               Grid.RowSpan="7"/>
+               Grid.ColumnSpan="6"
+               Grid.RowSpan="8"/>
 
         <TextBlock Grid.Row="2"
                    Grid.Column="1"

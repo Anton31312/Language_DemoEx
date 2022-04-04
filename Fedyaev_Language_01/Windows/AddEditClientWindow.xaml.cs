@@ -58,7 +58,7 @@ namespace Fedyaev_Language_01.Windows
 
             tags = AppData.Context.Tag.ToList();
             lvTagClient.ItemsSource = tags;
-            tags = tags.Where(i => i.NameTag).ToList();
+            //tags = tags.Where(i => i.NameTag).ToList();
 
             isEdit = true;
         }
