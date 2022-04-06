@@ -39,6 +39,14 @@
           <Property Name="Comment" Type="nvarchar(max)" />
           <Property Name="IsDone" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="ClientServicePhoto">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDClientService" Type="int" Nullable="false" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="500" Nullable="false" />
+        </EntityType>
         <EntityType Name="Employer">
           <Key>
             <PropertyRef Name="ID" />
@@ -193,6 +201,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ClientServicePhoto_ClientService">
+          <End Role="ClientService" Type="Self.ClientService" Multiplicity="1" />
+          <End Role="ClientServicePhoto" Type="Self.ClientServicePhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientService">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientServicePhoto">
+              <PropertyRef Name="IDClientService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Employer_CategoryEmployer">
           <End Role="CategoryEmployer" Type="Self.CategoryEmployer" Multiplicity="1" />
           <End Role="Employer" Type="Self.Employer" Multiplicity="*" />
@@ -316,6 +336,7 @@
           <EntitySet Name="CategoryEmployer" EntityType="Self.CategoryEmployer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ClientService" EntityType="Self.ClientService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientServicePhoto" EntityType="Self.ClientServicePhoto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employer" EntityType="Self.Employer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="EmployerService" EntityType="Self.EmployerService" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
@@ -362,6 +383,10 @@
           <AssociationSet Name="FK_ClientService_Service" Association="Self.FK_ClientService_Service">
             <End Role="Service" EntitySet="Service" />
             <End Role="ClientService" EntitySet="ClientService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClientServicePhoto_ClientService" Association="Self.FK_ClientServicePhoto_ClientService">
+            <End Role="ClientService" EntitySet="ClientService" />
+            <End Role="ClientServicePhoto" EntitySet="ClientServicePhoto" />
           </AssociationSet>
           <AssociationSet Name="FK_Employer_CategoryEmployer" Association="Self.FK_Employer_CategoryEmployer">
             <End Role="CategoryEmployer" EntitySet="CategoryEmployer" />
@@ -435,6 +460,7 @@
           <Property Name="IsDone" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Client" Relationship="Self.FK_ClientService_Client" FromRole="ClientService" ToRole="Client" />
           <NavigationProperty Name="Service" Relationship="Self.FK_ClientService_Service" FromRole="ClientService" ToRole="Service" />
+          <NavigationProperty Name="ClientServicePhoto" Relationship="Language_Fedyaev_01Model.FK_ClientServicePhoto_ClientService" FromRole="ClientService" ToRole="ClientServicePhoto" />
         </EntityType>
         <EntityType Name="Employer">
           <Key>
@@ -698,6 +724,11 @@
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="ClientServicePhoto" EntityType="Language_Fedyaev_01Model.ClientServicePhoto" />
+          <AssociationSet Name="FK_ClientServicePhoto_ClientService" Association="Language_Fedyaev_01Model.FK_ClientServicePhoto_ClientService">
+            <End Role="ClientService" EntitySet="ClientService" />
+            <End Role="ClientServicePhoto" EntitySet="ClientServicePhoto" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -710,6 +741,27 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
+        <EntityType Name="ClientServicePhoto">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDClientService" Type="Int32" Nullable="false" />
+          <Property Name="Photo" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ClientService" Relationship="Language_Fedyaev_01Model.FK_ClientServicePhoto_ClientService" FromRole="ClientServicePhoto" ToRole="ClientService" />
+        </EntityType>
+        <Association Name="FK_ClientServicePhoto_ClientService">
+          <End Type="Language_Fedyaev_01Model.ClientService" Role="ClientService" Multiplicity="1" />
+          <End Type="Language_Fedyaev_01Model.ClientServicePhoto" Role="ClientServicePhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClientService">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ClientServicePhoto">
+              <PropertyRef Name="IDClientService" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -890,6 +942,15 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище Language_Fedyaev_01Model.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище Language_Fedyaev_01Model.sp_upgraddiagrams" />
+          <EntitySetMapping Name="ClientServicePhoto">
+            <EntityTypeMapping TypeName="Language_Fedyaev_01Model.ClientServicePhoto">
+              <MappingFragment StoreEntitySet="ClientServicePhoto">
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="IDClientService" ColumnName="IDClientService" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

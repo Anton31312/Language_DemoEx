@@ -14,6 +14,12 @@ namespace Fedyaev_Language_01.EF
     
     public partial class ClientService
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ClientService()
+        {
+            this.ClientServicePhoto = new HashSet<ClientServicePhoto>();
+        }
+    
         public int ID { get; set; }
         public int IDClient { get; set; }
         public int IDService { get; set; }
@@ -23,5 +29,7 @@ namespace Fedyaev_Language_01.EF
     
         public virtual Client Client { get; set; }
         public virtual Service Service { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ClientServicePhoto> ClientServicePhoto { get; set; }
     }
 }

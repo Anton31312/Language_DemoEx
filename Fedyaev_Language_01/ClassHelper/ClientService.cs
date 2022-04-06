@@ -6,14 +6,8 @@ using System.Threading.Tasks;
 
 namespace Fedyaev_Language_01.EF
 {
-    public partial class Client
+    public partial class ClientService
     {
-        public List<Tag> Tags
-        {
-            get
-            {
-                return Tag.ToList();
-            }
-        }
+        public string GetCountFile => $"Всего файлов: {ClientServicePhoto.Count}";
     }
 }

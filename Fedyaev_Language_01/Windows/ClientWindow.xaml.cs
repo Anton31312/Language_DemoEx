@@ -45,14 +45,11 @@ namespace Fedyaev_Language_01.Windows
             "Все"
         };
 
-        bool checkBirthday = false;
         int numberPage = 0;
         int countClient;
 
         private void Filter() // Поиск, сортировка, постраничный вывод, фильтрация
         {
-            if (checkBirthday)
-            {
                 clientList = AppData.Context.VM_ClientList.ToList(); // получение всех клиентов из БД
                 lvClient.ItemsSource = clientList;
                 // Поиск
@@ -124,83 +121,18 @@ namespace Fedyaev_Language_01.Windows
                     default:
                         lvClient.ItemsSource = clientList.Skip(numberPage * 10).Take(10).ToList();
                         break;
-                }
+                } 
+
+            //Сортировка по ДР
+            if (cbBithNow.IsChecked == false)
+            {
+                lvClient.ItemsSource = AppData.Context.VM_ClientList.ToList();
             }
             else
             {
-                clientList = AppData.Context.VM_ClientList.ToList(); // получение всех клиентов из БД
-                lvClient.ItemsSource = clientList;
-                // Поиск
-                clientList = clientList.
-                    Where(i => i.LastName.ToLower().Contains(txtSearch.Text.ToLower()) || i.FirstName.ToLower().Contains(txtSearch.Text.ToLower())
-                        || i.Patronymic.ToLower().Contains(txtSearch.Text.ToLower()) || i.Email.ToLower().Contains(txtSearch.Text.ToLower())
-                        || i.Phone.ToLower().Contains(txtSearch.Text.ToLower()) && i.DateBith.Month == DateTime.Now.Month).ToList();
-
-                // Фильтрация
-                switch (cmbFilter.SelectedIndex)
-                {
-                    case 0:
-                        clientList = clientList.OrderBy(i => i.ID).ToList(); // фильтрация по возрастанию
-                        break;
-
-                    case 1:
-                        clientList = clientList.Where(i => i.Gender == "мужской").ToList(); // фильтрация по мужскому полу
-                        break;
-
-                    case 2:
-                        clientList = clientList.Where(i => i.Gender == "женский").ToList(); // фильтрация по женскому полу
-                        break;
-
-                    default:
-                        clientList = clientList.OrderBy(i => i.ID).ToList();
-                        break;
-                }
-
-                // Сортировка
-                switch (cmbSort.SelectedIndex)
-                {
-                    case 0:
-                        clientList = clientList.OrderBy(i => i.LastName).ToList(); // сортировка по возрастанию
-                        break;
-
-                    case 1:
-                        clientList = clientList.OrderByDescending(i => i.DateLastVisit).ToList(); // сортировка по убыванию
-                        break;
-
-                    case 2:
-                        clientList = clientList.OrderByDescending(i => i.CountVisit).ToList();
-                        break;
-
-                    default:
-                        clientList = clientList.OrderByDescending(i => i.LastName).ToList();
-                        break;
-                }
-
-                countClient = clientList.Count;
-
-                // Постраничный вывод
-                switch (cmbSelectCountPage.SelectedIndex)
-                {
-                    case 0:
-                        lvClient.ItemsSource = clientList.Skip(numberPage * 10).Take(10).ToList();
-                        break;
-
-                    case 1:
-                        lvClient.ItemsSource = clientList.Skip(numberPage * 50).Take(50).ToList();
-                        break;
-
-                    case 2:
-                        lvClient.ItemsSource = clientList.Skip(numberPage * 200).Take(200).ToList();
-                        break;
-                    case 3:
-                        lvClient.ItemsSource = clientList.ToList();
-                        break;
-
-                    default:
-                        lvClient.ItemsSource = clientList.Skip(numberPage * 10).Take(10).ToList();
-                        break;
-                }
+               lvClient.ItemsSource = clientList.Where(i => i.DateBith.Month == DateTime.Now.Month).ToList();
             }
+
         }
 
         public ClientWindow()
@@ -222,8 +154,8 @@ namespace Fedyaev_Language_01.Windows
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
-            mainWindow.ShowDialog();
             this.Close();
+            mainWindow.Show();
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
@@ -336,17 +268,11 @@ namespace Fedyaev_Language_01.Windows
 
         private void CbBithNow_Checked(object sender, RoutedEventArgs e)
         {
-            numberPage = 0;
-            tbCountPage.Text = "1";
-            checkBirthday = true;
             Filter();
         }
 
         private void CbBithNow_Unchecked(object sender, RoutedEventArgs e)
         {
-            numberPage = 0;
-            tbCountPage.Text = "1";
-            checkBirthday = false;
             Filter();
         }
 
@@ -367,6 +293,16 @@ namespace Fedyaev_Language_01.Windows
 
         private void BtnVisitChek_Click(object sender, RoutedEventArgs e)
         {
+            var listClient = lvClient.SelectedItem;
+            
+            if (lvClient.SelectedItem is Client clientVisit)
+            {
+                VisitClientWindow visitClientWindow = new VisitClientWindow(clientVisit);
+                this.Opacity = 0.2;
+                visitClientWindow.ShowDialog();
+                this.Opacity = 1;
+                Filter();
+            }
 
         }
     }

@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Fedyaev_Language_01.EF;
+using Fedyaev_Language_01.ClassHelper;
 
 namespace Fedyaev_Language_01.Windows
 {
@@ -19,9 +21,15 @@ namespace Fedyaev_Language_01.Windows
     /// </summary>
     public partial class VisitClientWindow : Window
     {
-        public VisitClientWindow()
+        Client client = new Client();
+        List<ClientService> clientServices = new List<ClientService>();
+        public VisitClientWindow(Client clientVisit)
         {
             InitializeComponent();
+            client = clientVisit;
+
+            clientServices = AppData.Context.ClientService.ToList();
+            lvVisitClient.ItemsSource = clientServices.Where(i => i.IDClient == clientVisit.ID);
         }
     }
 }

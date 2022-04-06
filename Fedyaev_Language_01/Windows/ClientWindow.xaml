@@ -127,6 +127,24 @@
                     <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Path=Email}"/>
                     <GridViewColumn Header="DateLastVisit" DisplayMemberBinding="{Binding Path=DateLastVisit}"/>
                     <GridViewColumn Header="CountVisit" DisplayMemberBinding="{Binding Path=CountVisit}"/>
+                    <GridViewColumn Header="Tag" Width="100" DisplayMemberBinding="{Binding Path=Tag}">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ItemsControl ItemsSource="{Binding Tags}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding NameTag}">
+                                                <TextBlock.Foreground>
+                                                    <SolidColorBrush Color="{Binding ColorTag}"/>
+                                                </TextBlock.Foreground>
+                                            </TextBlock>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                               
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

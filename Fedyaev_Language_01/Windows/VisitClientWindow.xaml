@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fedyaev_Language_01.Windows"
         mc:Ignorable="d"
-        Title="VisitClientWindow"
+        Title="Language"
         Height="450" 
-        Width="600">
+        Width="600"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -54,8 +55,8 @@
                 <DataTemplate>
                     <Border Background="Beige"
                 HorizontalAlignment="Center"
-                Height="200"
-                Width="400"
+                Height="100"
+                Width="570"
                 BorderThickness="1"
                 BorderBrush="LightGray">
                         <Grid>
@@ -72,20 +73,22 @@
 
 
                             <!--Grid.Collumn = 0-->
-                            <TextBlock Text="Наименнования услуги"
+                            <TextBlock Text="{Binding Path=Service.NameService}"
                                        Margin="10 0 0 0"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"
-                                       FontSize="20"/>
+                                       FontSize="20"
+                                       x:Name="tbNameService"/>
 
-                            <TextBlock Text="гггг.мм.дд чч:мм"
+                            <TextBlock Text="{Binding Path=DateStart, StringFormat='{}{0:yyyy.MM.dd HH:mm}'}"
                                        Margin="10 0 0 0"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"
                                        Grid.Row="1"
-                                       FontSize="20"/>
+                                       FontSize="20"
+                                       x:Name="tbDateStart"/>
 
-                            <TextBlock Text="всего файлов: 9"
+                            <TextBlock Text="{Binding GetCountFile}"
                                        Margin="10 0 0 0"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"

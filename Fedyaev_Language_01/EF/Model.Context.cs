@@ -38,6 +38,7 @@ namespace Fedyaev_Language_01.EF
         public virtual DbSet<Tag> Tag { get; set; }
         public virtual DbSet<VM_ClientDetails> VM_ClientDetails { get; set; }
         public virtual DbSet<VM_ClientList> VM_ClientList { get; set; }
+        public virtual DbSet<ClientServicePhoto> ClientServicePhoto { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
         {

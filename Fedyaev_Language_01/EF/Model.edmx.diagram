@@ -24,6 +24,8 @@
         <AssociationConnector Association="Language_Fedyaev_01Model.FK_ServicePhoto_Service" ManuallyRouted="false" />
         <AssociationConnector Association="Language_Fedyaev_01Model.EmployerService" ManuallyRouted="false" />
         <AssociationConnector Association="Language_Fedyaev_01Model.TagClient" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Language_Fedyaev_01Model.ClientServicePhoto" Width="1.5" PointX="7.5" PointY="10.875" />
+        <AssociationConnector Association="Language_Fedyaev_01Model.FK_ClientServicePhoto_ClientService" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
