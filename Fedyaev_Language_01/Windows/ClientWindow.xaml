@@ -166,11 +166,20 @@
                 Click="BtnBack_Click" 
                 Grid.ColumnSpan="2"/>
 
+        <Button x:Name="btnDelete"
+                Content="Удалить"
+                Grid.Row="2"
+                Width="120"
+                Margin="150 0 0 0"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Left"
+                Click="BtnDelete_Click"/>
+
         <StackPanel Orientation="Horizontal"
                     Grid.Row="2"
                     Grid.ColumnSpan="2"
                     HorizontalAlignment="Center">
-            
+
             <Button x:Name="btnLastPage"
                     Content="Назад"
                     Width="100"
@@ -199,7 +208,6 @@
                 </StackPanel>
             </StackPanel>
 
-
             <Button x:Name="btnNextPage"
                     Content="Далее"
                     Width="100"
@@ -210,21 +218,18 @@
                     Grid.Column="1"
                     Orientation="Horizontal"
                     HorizontalAlignment="Right">
-            
+
             <Button Width="210"
                     Content="Посмотреть посещения"
                     x:Name="btnVisitChek"
                     Margin="0 0 5 0"
                     Click="BtnVisitChek_Click"/>
-            
+
             <Button x:Name="btnAdd"
                 Margin="0,10,10,10"
                 Width="100"
                 Content="Добавить"
                 Click="BtnAdd_Click"/>
         </StackPanel>
-        
-
-
     </Grid>
 </Window>

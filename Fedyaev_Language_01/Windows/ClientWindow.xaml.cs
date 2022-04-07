@@ -297,11 +297,33 @@ namespace Fedyaev_Language_01.Windows
             
             if (lvClient.SelectedItem is Client clientVisit)
             {
-                VisitClientWindow visitClientWindow = new VisitClientWindow(clientVisit);
+                VisitClientWindow visitClientWindow = new VisitClientWindow(clientVisit); 
                 this.Opacity = 0.2;
                 visitClientWindow.ShowDialog();
                 this.Opacity = 1;
                 Filter();
+            }
+
+        }
+
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            Client client = new Client();
+            //var user = client.Where
+            if (lvClient.SelectedItem is VM_ClientList removeClient)
+            {
+                var resultClick = MessageBox.Show("Вы действительно хотите удалить клиента?", "Вы уверены?",  MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (resultClick == MessageBoxResult.Yes)
+                {
+                    AppData.Context.VM_ClientList.Remove(removeClient);
+                    AppData.Context.SaveChanges();
+                    MessageBox.Show("Запись удалена", "Удаление клиента", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Filter();
+                }
+                else
+                {
+                    MessageBox.Show("Выберите клиента", "Удаление клиента", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
 
         }
